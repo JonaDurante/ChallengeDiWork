@@ -1,9 +1,8 @@
-﻿using ChallengeDiWork.Modelo;
-using System.Data;
+﻿using System.Data;
 using System.Data.SqlClient;
+using ChallengeDiWork.Modelo;
 
-
-namespace ChallengeDiWork
+namespace ChallengeDiWork.Persistencia
 {
     public class ConsultasDeSalida : BD
     {
@@ -12,18 +11,11 @@ namespace ChallengeDiWork
             Repuesto repuesto = new Repuesto();
             using (SqlConnection sqlConnection = new SqlConnection(ConnecctionString))
             {
-                var query = "FROM * Respuesto WHERE Nombre = @nombre";
-                
-                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(query, sqlConnection);
-                sqlConnection.Open();
-                if (nombre != null)
-                {
+                var query = "Exuc Sp_";
 
-                }
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(query, sqlConnection);
                 DataSet resultado = new DataSet();
                 sqlDataAdapter.Fill(resultado);
-
-                sqlConnection.Close();
                 return repuesto;
             }
         }

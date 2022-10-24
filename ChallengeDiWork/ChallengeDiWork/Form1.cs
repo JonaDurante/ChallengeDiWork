@@ -16,5 +16,12 @@ namespace ChallengeDiWork
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var valor = tbValor.Text;
+            Console.WriteLine("Este es tu texto, si todo sale bien: " + valor);
+
+        }
     }
 }

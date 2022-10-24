@@ -28,20 +28,57 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.tbEnviar = new System.Windows.Forms.Button();
+            this.tbValor = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
+            // 
+            // tbEnviar
+            // 
+            this.tbEnviar.Location = new System.Drawing.Point(392, 37);
+            this.tbEnviar.Name = "tbEnviar";
+            this.tbEnviar.Size = new System.Drawing.Size(82, 22);
+            this.tbEnviar.TabIndex = 0;
+            this.tbEnviar.Text = "Enviar";
+            this.tbEnviar.UseVisualStyleBackColor = true;
+            this.tbEnviar.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // tbValor
+            // 
+            this.tbValor.Location = new System.Drawing.Point(39, 37);
+            this.tbValor.Name = "tbValor";
+            this.tbValor.Size = new System.Drawing.Size(223, 22);
+            this.tbValor.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(39, 15);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(128, 16);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Ingrese aquí el calor";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(513, 143);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.tbValor);
+            this.Controls.Add(this.tbEnviar);
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
+
+        private System.Windows.Forms.Button tbEnviar;
+        private System.Windows.Forms.TextBox tbValor;
+        private System.Windows.Forms.Label label1;
     }
 }
 

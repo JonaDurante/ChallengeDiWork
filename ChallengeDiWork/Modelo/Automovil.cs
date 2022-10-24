@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace ChallengeDiWork.Modelo
 {
-
     public class Automovil : Vehiculo
     {
         public string Tipo { get; set; }

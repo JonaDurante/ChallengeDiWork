@@ -1,45 +1,47 @@
-﻿using ChallengeDiWork.Modelo;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
+using System.Threading.Tasks;
+using ChallengeDiWork;
+using ChallengeDiWork.Modelo;
 
-namespace Modelo
+namespace ChallengeDiWork.Logica
 {
     public class Factura
     {
-        public Repuesto repuesto { get; set; }
-        public Desperfecto desperfecto { get; set; }
-        public Vehiculo vehiculo { get; set; }
-        public decimal TotalFactura { get; set; }
-        public decimal SubtotalFactura { get; set; }
-        public string metodoDePago { get; set; }
+        public Vehiculo Vehiculo { get; set; }
+        public Desperfecto Desperfecto { get; set; }
+        public Repuesto Repuesto { get; set; }
+        public string MetodoDePago { get; set; }
+        public decimal Subtotal { get; set; }
+        public decimal TotalFacturado { get; set; }
 
-        public Factura(Repuesto repuesto, Desperfecto desperfecto, Vehiculo vehiculo)
+        public Factura(Vehiculo vehiculo, Desperfecto desperfecto, Repuesto repuesto)
         {
-            this.repuesto = repuesto;
-            this.desperfecto = desperfecto;
-            this.vehiculo = vehiculo;
+            Vehiculo = vehiculo;
+            Desperfecto = desperfecto;
+            Repuesto = repuesto;
         }
-
-        public void CalcularSubTotal()
+        public void PresupuestoInicial()
         {
-            var total = ((repuesto.Precio * repuesto.Cantidad) + desperfecto.ManoDeObra) + (130 * desperfecto.Tiempo) * 1.10m;
-            SubtotalFactura = total;
+            Subtotal = ((Repuesto.Precio * Repuesto.Cantidad) + Desperfecto.ManoDeObra + (130 * Desperfecto.Tiempo)) * 1.10m;
         }
-
-        public void SubtotalFacturaSegunMetodoDePago()
+        public decimal Total()
         {
-            var total = 0m;
-            switch (metodoDePago)
+            switch (MetodoDePago)
             {
-                case "TD": // Tarjeta de Débito
-                    total = SubtotalFactura * 1.10m; // 10% de recargo por pagar con débito
+                case "TD": //Tarjeta de debito
+                    return TotalFacturado = Subtotal * 1.10m; //Recargo del 10% por pago con Tarjeta de debito
                     break;
-                case "TC": // Tarjeta de Crédito
-                    total = SubtotalFactura * 1.20m; // 20% de recargo por pagar con Credito
+
+                case "TC": //Tarjeta de credito
+                    return TotalFacturado = Subtotal * 1.10m; //Recargo del 10 % por pago con Tarjeta de credito
                     break;
-                default:  // Default Efectivo
-                    total = SubtotalFactura - (SubtotalFactura * 0.20m); // 20% de descuento
-                    break;
+                    
+                default: return TotalFacturado = Subtotal - (Subtotal * 1.10m); //Descuento del 10% por pago en efectivo
             }
-            TotalFactura = total;
         }
     }
 }
